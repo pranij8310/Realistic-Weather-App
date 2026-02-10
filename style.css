@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    }
+    
+    body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(120deg, #4facfe, #00f2fe);
+    transition: background 1s ease;
+    }
+    
+    /* Floating particles background */
+    .bg-animation::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: floatBg 30s linear infinite;
+    }
+
+@keyframes floatBg {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+    }
+    
+    /* Container */
+    .container {
+    position: relative;
+    z-index: 2;
+    }
+    
+    /* Glassmorphism Card */
+    .weather-card {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 30px;
+    width: 320px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .app-title {
+        margin-bottom: 15px;
+        }
+        
+        /* Search */
+        .search-box {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        }
+        
+        .search-box input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        }
+        
+.search-box button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    }
+    
+    .search-box button:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.5);
+    }
+    
+    /* Weather Info */
+    .temp {
+    font-size: 48px;
+    font-weight: bold;
+    }
+    
+    .condition {
+    margin-bottom: 10px;
+    }
+
+    .details {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 0;
+        }
+        
+        /* Hidden utility */
+        .hidden {
+        display: none;
+        }
+        
+        /* Simple animated icon */
+        .icon {
+        font-size: 50px;
+        animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        }
+        
+        /* Loading animation */
+        .loading {
+        margin: 10px 0;
+        animation: pulse 1s infinite;
+        }
+        
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+    }
+    
+    /* Dynamic themes */
+    .sunny { background: linear-gradient(120deg, #f6d365, #fda085); }
+    .rain { background: linear-gradient(120deg, #4facfe, #00f2fe); }
+    .clouds { background: linear-gradient(120deg, #bdc3c7, #2c3e50); }
+    .night { background: linear-gradient(120deg, #141e30, #243b55); }
+    .snow { background: linear-gradient(120deg, #e6dada, #274046); }        

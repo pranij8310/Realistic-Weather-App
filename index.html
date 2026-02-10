@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Weather App</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Floating animated background -->
+<div class="bg-animation" id="bgAnimation"></div>
+
+<!-- Glassmorphism Weather Card -->
+<div class="container">
+<div class="weather-card">
+
+<h1 class="app-title">Weather</h1>
+
+<!-- Search Bar -->
+<div class="search-box">
+<input type="text" id="cityInput" placeholder="Enter city name..." />
+<button id="searchBtn">Search</button>
+</div>
+
+<!-- Loading Animation -->
+<div class="loading hidden" id="loading">Loading...</div>
+
+<!-- Error Message -->
+<div class="error hidden" id="errorMsg">City not found 😢</div>
+
+<!-- Weather Info -->
+<div class="weather-info hidden" id="weatherInfo">
+<h2 id="cityName"></h2>
+<div class="temp" id="temperature"></div>
+<div class="condition" id="condition"></div>
+
+<div class="details">
+<div>💧 <span id="humidity"></span></div>
+<div>🌬 <span id="wind"></span></div>
+</div>
+
+<!-- Animated icon container -->
+<div class="icon" id="weatherIcon"></div>
+</div>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
