@@ -1,52 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Weather App</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Weather</title>
+
+  <!-- Leaflet Map CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<!-- Floating animated background -->
-<div class="bg-animation" id="bgAnimation"></div>
+  <!-- Animated gradient background -->
+  <div class="gradient-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+  <div class="bg-blob blob1"></div>
+  <div class="bg-blob blob2"></div>
 
-<!-- Glassmorphism Weather Card -->
-<div class="container">
-<div class="weather-card">
 
-<h1 class="app-title">Weather</h1>
+  <!-- Floating particles -->
+  <div class="particles"></div>
 
-<!-- Search Bar -->
-<div class="search-box">
-<input type="text" id="cityInput" placeholder="Enter city name..." />
-<button id="searchBtn">Search</button>
-</div>
+  <div class="container">
+    <div class="weather-card">
 
-<!-- Loading Animation -->
-<div class="loading hidden" id="loading">Loading...</div>
+      <!-- 🌍 Map Section -->
+      <div class="map-wrapper">
+        <div id="map"></div>
+      </div>
 
-<!-- Error Message -->
-<div class="error hidden" id="errorMsg">City not found 😢</div>
+      <h1 class="app-title">🌦 Weather</h1>
 
-<!-- Weather Info -->
-<div class="weather-info hidden" id="weatherInfo">
-<h2 id="cityName"></h2>
-<div class="temp" id="temperature"></div>
-<div class="condition" id="condition"></div>
+      <div class="search-box">
+        <input type="text" id="cityInput" placeholder="Search any city..." />
+        <button id="searchBtn">Search</button>
+      </div>
 
-<div class="details">
-<div>💧 <span id="humidity"></span></div>
-<div>🌬 <span id="wind"></span></div>
-</div>
+      <div class="loading hidden" id="loading"></div>
+      <div class="error hidden" id="errorMsg">City not found</div>
 
-<!-- Animated icon container -->
-<div class="icon" id="weatherIcon"></div>
-</div>
+      <div class="weather-info hidden" id="weatherInfo">
+        <div id="weatherIcon" class="icon"></div>
+        <h2 id="cityName"></h2>
+        <div id="temperature" class="temp"></div>
+        <div id="condition" class="condition"></div>
 
-</div>
-</div>
+        <div class="details">
+          <div>Humidity <span id="humidity"></span></div>
+          <div>Wind <span id="wind"></span></div>
+        </div>
+      </div>
 
-<script src="script.js"></script>
+    </div>
+  </div>
+
+  <!-- Leaflet JS (placed before your script.js for proper loading) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+
 </body>
 </html>
