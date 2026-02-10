@@ -2,140 +2,251 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-    }
-    
-    body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: linear-gradient(120deg, #4facfe, #00f2fe);
-    transition: background 1s ease;
-    }
-    
-    /* Floating particles background */
-    .bg-animation::before {
-    content: "";
-    position: absolute;
+    color: white;
+  }
+  
+  /* Animated gradient */
+  .gradient-bg {
+    position: fixed;
     width: 200%;
     height: 200%;
-    background-image: radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: floatBg 30s linear infinite;
-    }
-
-@keyframes floatBg {
+    background: linear-gradient(45deg, #4facfe, #00f2fe, #667eea, #764ba2);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    z-index: -2;
+  }
+  
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Floating particles */
+  .particles::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: float 25s linear infinite;
+    z-index: -1;
+  }
+  
+  @keyframes float {
     from { transform: translateY(0); }
     to { transform: translateY(-200px); }
-    }
-    
-    /* Container */
-    .container {
-    position: relative;
-    z-index: 2;
-    }
-    
-    /* Glassmorphism Card */
-    .weather-card {
-    backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 25px;
-    padding: 30px;
-    width: 320px;
+  }
+  
+  /* Glass card */
+  .weather-card {
+    backdrop-filter: blur(25px);
+    background: rgba(255,255,255,0.12);
+    border-radius: 30px;
+    padding: 28px;
+    width: 360px;
     text-align: center;
-    color: white;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    animation: fadeIn 1s ease;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .app-title {
-        margin-bottom: 15px;
-        }
-        
-        /* Search */
-        .search-box {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 15px;
-        }
-        
-        .search-box input {
-        flex: 1;
-        padding: 10px;
-        border: none;
-        border-radius: 10px;
-        outline: none;
-        }
-        
-.search-box button {
-    padding: 10px 15px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    animation: fadeUp 1s ease;
+  }
+  
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .app-title {
+    margin: 15px 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  /* 🌍 Map wrapper (NEW) */
+  .map-wrapper {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    animation: mapFade 1.2s ease;
+  }
+  
+  /* Map itself */
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Smooth map appearance */
+  @keyframes mapFade {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  /* Search */
+  .search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  
+  .search-box input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
     border: none;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.3);
-    color: white;
+    outline: none;
+  }
+  
+  .search-box button {
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: none;
     cursor: pointer;
-    transition: 0.3s;
-    }
-    
-    .search-box button:hover {
-    transform: scale(1.05);
-    background: rgba(255,255,255,0.5);
-    }
-    
-    /* Weather Info */
-    .temp {
-    font-size: 48px;
-    font-weight: bold;
-    }
-    
-    .condition {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    transition: 0.3s ease;
+  }
+  
+  .search-box button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+  
+  /* Weather info */
+  .temp {
+    font-size: 52px;
+    font-weight: 700;
+    margin: 10px 0;
+    text-shadow: 0 0 15px rgba(255,255,255,0.6);
+  }
+  
+  .condition {
+    opacity: 0.85;
+  }
+  
+  .details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  
+  /* Icon glow animation */
+  .icon {
+    font-size: 60px;
     margin-bottom: 10px;
-    }
-
-    .details {
-        display: flex;
-        justify-content: space-around;
-        margin: 10px 0;
-        }
-        
-        /* Hidden utility */
-        .hidden {
-        display: none;
-        }
-        
-        /* Simple animated icon */
-        .icon {
-        font-size: 50px;
-        animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-        0%,100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-        }
-        
-        /* Loading animation */
-        .loading {
-        margin: 10px 0;
-        animation: pulse 1s infinite;
-        }
-        
-@keyframes pulse {
-    0% { opacity: 0.3; }
-    50% { opacity: 1; }
-    100% { opacity: 0.3; }
-    }
-    
-    /* Dynamic themes */
-    .sunny { background: linear-gradient(120deg, #f6d365, #fda085); }
-    .rain { background: linear-gradient(120deg, #4facfe, #00f2fe); }
-    .clouds { background: linear-gradient(120deg, #bdc3c7, #2c3e50); }
-    .night { background: linear-gradient(120deg, #141e30, #243b55); }
-    .snow { background: linear-gradient(120deg, #e6dada, #274046); }        
+    animation: iconFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
+  }
+  
+  @keyframes iconFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  
+  /* Loading spinner */
+  .loading {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    margin: 15px auto;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .hidden { display: none; }
+  
+  /* Glowing floating orbs */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.5;
+    animation: floatOrb 18s ease-in-out infinite;
+    z-index: -1;
+  }
+  
+  .orb1 {
+    width: 300px;
+    height: 300px;
+    background: #ff00cc;
+    top: 10%;
+    left: 15%;
+  }
+  
+  .orb2 {
+    width: 250px;
+    height: 250px;
+    background: #00f2ff;
+    bottom: 15%;
+    right: 20%;
+    animation-delay: 6s;
+  }
+  
+  .orb3 {
+    width: 200px;
+    height: 200px;
+    background: #ffe600;
+    top: 55%;
+    left: 60%;
+    animation-delay: 12s;
+  }
+  
+  @keyframes floatOrb {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(40px, -40px); }
+  }
+  .weather-card::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+    filter: blur(40px);
+    z-index: -1;
+    opacity: 0.6;
+  }
+  .bg-blob {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    animation: blobMove 25s infinite alternate ease-in-out;
+    z-index: -3;
+  }
+  
+  .blob1 { background: #ff6ec7; top: 10%; left: 5%; }
+  .blob2 { background: #00f2fe; bottom: 5%; right: 10%; }
+  
+  @keyframes blobMove {
+    from { transform: translate(0,0) scale(1); }
+    to { transform: translate(80px,-60px) scale(1.2); }
+  }
+  body.sunny { background: linear-gradient(#4facfe, #ffe259); }
+  body.rainy { background: linear-gradient(#2c3e50, #4ca1af); }
+  body.cloudy { background: linear-gradient(#bdc3c7, #2c3e50); }
+  body.snowy { background: linear-gradient(#e6dada, #274046); }
+  body.night { background: linear-gradient(#0f2027, #203a43, #2c5364); }
+  .leaflet-container {
+    border-radius: 20px;
+    filter: saturate(1.2) contrast(1.05);
+  }
+          
